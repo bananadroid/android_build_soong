@@ -59,6 +59,13 @@ func dataClean(ctx Context, config Config) {
 	ctx.Println("Entire data directory removed.")
 }
 
+// Remove everything relevant for a clean ota package
+func deviceClean(ctx Context, config Config, what int) {
+	productOutPath := config.ProductOut()
+	removeGlobs(ctx, productOutPath)
+	ctx.Println(productOutPath, "removed.")
+}
+
 // installClean deletes all of the installed files -- the intent is to remove
 // files that may no longer be installed, either because the user previously
 // installed them, or they were previously installed by default but no longer
