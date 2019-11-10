@@ -201,6 +201,7 @@ func init() {
 			"LOCAL_ODM_MODULE":                 "device_specific",
 			"LOCAL_PRODUCT_MODULE":             "product_specific",
 			"LOCAL_SYSTEM_EXT_MODULE":          "system_ext_specific",
+			"LOCAL_PRODUCT_OVERLAY_MODULE":     "product_overlay_specific",
 			"LOCAL_EXPORT_PACKAGE_RESOURCES":   "export_package_resources",
 			"LOCAL_PRIVILEGED_MODULE":          "privileged",
 			"LOCAL_AAPT_INCLUDE_ALL_RESOURCES": "aapt_include_all_resources",
