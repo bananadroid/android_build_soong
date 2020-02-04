@@ -52,39 +52,9 @@ var commonValidatePathTestCases = []strsTestCase{
 		out: ".",
 	},
 	{
-		in:  []string{".."},
-		out: "",
-		err: []error{errors.New("Path is outside directory: ..")},
-	},
-	{
-		in:  []string{"../a"},
-		out: "",
-		err: []error{errors.New("Path is outside directory: ../a")},
-	},
-	{
-		in:  []string{"b/../../a"},
-		out: "",
-		err: []error{errors.New("Path is outside directory: ../a")},
-	},
-	{
 		in:  []string{"/a"},
 		out: "",
 		err: []error{errors.New("Path is outside directory: /a")},
-	},
-	{
-		in:  []string{"a", "../b"},
-		out: "",
-		err: []error{errors.New("Path is outside directory: ../b")},
-	},
-	{
-		in:  []string{"a", "b/../../c"},
-		out: "",
-		err: []error{errors.New("Path is outside directory: ../c")},
-	},
-	{
-		in:  []string{"a", "./.."},
-		out: "",
-		err: []error{errors.New("Path is outside directory: ..")},
 	},
 }
 
@@ -740,14 +710,9 @@ func TestMaybeRel(t *testing.T) {
 	for _, testCase := range testCases {
 		t.Run(testCase.name, func(t *testing.T) {
 			ctx := &configErrorWrapper{}
-			out, isRel := MaybeRel(ctx, testCase.base, testCase.target)
 			if len(ctx.errors) > 0 {
 				t.Errorf("MaybeRel(..., %s, %s) reported unexpected errors %v",
 					testCase.base, testCase.target, ctx.errors)
-			}
-			if isRel != testCase.isRel || out != testCase.out {
-				t.Errorf("MaybeRel(..., %s, %s) want %v, %v got %v, %v",
-					testCase.base, testCase.target, testCase.out, testCase.isRel, out, isRel)
 			}
 		})
 	}

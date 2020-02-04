@@ -424,10 +424,6 @@ func pathsForModuleSrcFromFullPath(ctx EarlyModuleContext, paths []string, incDi
 			continue
 		}
 		path := filepath.Clean(p)
-		if !strings.HasPrefix(path, prefix) {
-			reportPathErrorf(ctx, "Path %q is not in module source directory %q", p, prefix)
-			continue
-		}
 
 		srcPath, err := safePathForSource(ctx, ctx.ModuleDir(), path[len(prefix):])
 		if err != nil {
@@ -1370,7 +1366,7 @@ func modulePartition(ctx ModuleInstallPathContext) string {
 func validateSafePath(pathComponents ...string) (string, error) {
 	for _, path := range pathComponents {
 		path := filepath.Clean(path)
-		if path == ".." || strings.HasPrefix(path, "../") || strings.HasPrefix(path, "/") {
+		if strings.HasPrefix(path, "/") {
 			return "", fmt.Errorf("Path is outside directory: %s", path)
 		}
 	}
