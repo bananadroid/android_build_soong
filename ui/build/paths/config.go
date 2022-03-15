@@ -131,6 +131,7 @@ var Configuration = map[string]PathConfig{
 	"python3.7": Allowed,
 	"python3.8": Allowed,
 	"python3.9": Allowed,
+	"python3.10": Allowed,
 	"resize2fs": Allowed,
 
 	"aarch64-linux-android-addr2line":    Allowed,
