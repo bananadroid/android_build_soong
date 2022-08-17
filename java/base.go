@@ -830,7 +830,9 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 		flags = append(flags, "-I"+src.String())
 	}
 
-	if Bool(j.deviceProperties.Aidl.Generate_traces) {
+	sdkVersion := (j.SdkVersion(ctx)).Kind
+	defaultTrace := ((sdkVersion == android.SdkSystemServer) || (sdkVersion == android.SdkCore) || (sdkVersion == android.SdkCorePlatform))
+	if proptools.BoolDefault(j.deviceProperties.Aidl.Generate_traces, defaultTrace) {
 		flags = append(flags, "-t")
 	}
 
