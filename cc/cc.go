@@ -507,6 +507,7 @@ type ModuleContextIntf interface {
 	getVndkExtendsModuleName() string
 	isAfdoCompile() bool
 	isPgoCompile() bool
+	isCfi() bool
 	isNDKStubLibrary() bool
 	useClangLld(actx ModuleContext) bool
 	isForPlatform() bool
@@ -1285,6 +1286,13 @@ func (c *Module) isPgoCompile() bool {
 	return false
 }
 
+func (c *Module) isCfi() bool {
+	if sanitize := c.sanitize; sanitize != nil {
+		return Bool(sanitize.Properties.Sanitize.Cfi)
+	}
+	return false
+}
+
 func (c *Module) isNDKStubLibrary() bool {
 	if _, ok := c.compiler.(*stubDecorator); ok {
 		return true
@@ -1561,6 +1569,10 @@ func (ctx *moduleContextImpl) isAfdoCompile() bool {
 
 func (ctx *moduleContextImpl) isPgoCompile() bool {
 	return ctx.mod.isPgoCompile()
+}
+
+func (ctx *moduleContextImpl) isCfi() bool {
+	return ctx.mod.isCfi()
 }
 
 func (ctx *moduleContextImpl) isNDKStubLibrary() bool {
