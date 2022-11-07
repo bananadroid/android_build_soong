@@ -126,6 +126,8 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 				"-Wl,-mllvm,-inline-threshold=600")
 			flags.Local.LdFlags = append(flags.Local.LdFlags,
 				"-Wl,-mllvm,-inlinehint-threshold=750")
+			flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-unroll-threshold=600")
 		}
 	}
 	return flags
