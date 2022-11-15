@@ -227,6 +227,8 @@ var (
 		"-Wno-deprecated-anon-enum-enum-conversion", // http://b/153746485
 		"-Wno-string-compare",                       // http://b/153764102
 		"-Wno-pessimizing-move",                     // http://b/154270751
+		"-Wno-frame-larger-than=",                   // frame size increase is expected
+		"-Wno-frame-larger-than",                   // https://clang.llvm.org/docs/DiagnosticsReference.html
 		// New warnings to be fixed after clang-r399163
 		"-Wno-non-c-typedef-for-linkage", // http://b/161304145
 		// New warnings to be fixed after clang-r428724
