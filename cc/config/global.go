@@ -247,6 +247,7 @@ var (
 		"-Wno-error=unused-value",
 		"-Wno-error=single-bit-bitfield-constant-conversion",
 		"-Wno-error=unused-private-field",
+		"-Wno-unused-command-line-argument",
 	}
 
 	noOverrideExternalGlobalCflags = []string{
