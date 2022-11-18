@@ -245,6 +245,8 @@ var (
 		"-Wno-error=strict-prototypes",
 		"-Wno-error=enum-conversion",
 		"-Wno-error=unused-value",
+		"-Wno-error=single-bit-bitfield-constant-conversion",
+		"-Wno-error=unused-private-field",
 	}
 
 	noOverrideExternalGlobalCflags = []string{
@@ -302,8 +304,8 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r468909"
-	ClangDefaultShortVersion = "15.0.2"
+	ClangDefaultVersion      = "clang-r475365"
+	ClangDefaultShortVersion = "16.0.1"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
