@@ -567,7 +567,7 @@ func processMainCert(m android.ModuleBase, certPropValue string, certificates []
 		// Set a certificate to avoid panics later when accessing it.
 		mainCertificate = Certificate{
 			Key: android.PathForModuleOut(ctx, "missing.pk8"),
-			Pem: android.PathForModuleOut(ctx, "missing.pem"),
+			Pem: android.PathForModuleOut(ctx, "missing.x509.pem"),
 		}
 	}
 
