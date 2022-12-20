@@ -74,6 +74,7 @@ func GetConfig(name string) PathConfig {
 }
 
 var Configuration = map[string]PathConfig{
+	"addr2line":  Allowed,
 	"bash":    Allowed,
 	"brotli":  Allowed,
 	"ccache":  Allowed,
