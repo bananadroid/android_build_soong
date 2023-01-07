@@ -135,11 +135,6 @@ func installClean(ctx Context, config Config) {
 		return filepath.Join(productOutPath, path)
 	}
 
-	deviceSoongOutPath := config.DeviceSoongOutDir()
-	deviceSoongOut := func(path string) string {
-		return filepath.Join(deviceSoongOutPath, path)
-	}
-
 	// Host bin, frameworks, and lib* are intentionally omitted, since
 	// otherwise we'd have to rebuild any generated files created with
 	// those tools.
@@ -195,8 +190,7 @@ func installClean(ctx Context, config Config) {
 		productOut("sysloader"),
 		productOut("testcases"),
 		productOut("symbols"),
-		productOut("install"),
-		deviceSoongOut("dex_bootjars*"))
+		productOut("install"))
 }
 
 // Since products and build variants (unfortunately) shared the same
