@@ -121,17 +121,28 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 			policy := "cache_size=10%:cache_size_bytes=10g"
 			flags.Local.LdFlags = append(flags.Local.LdFlags, cachePolicyFormat+policy)
 		}
-
-		if !ctx.isPgoCompile() && !ctx.isAfdoCompile() {
-			flags.Local.LdFlags = append(flags.Local.LdFlags,
-				"-Wl,-mllvm,-inline-threshold=600")
-			flags.Local.LdFlags = append(flags.Local.LdFlags,
-				"-Wl,-mllvm,-inlinehint-threshold=750")
-			flags.Local.LdFlags = append(flags.Local.LdFlags,
-				"-Wl,-mllvm,-unroll-threshold=600")
-			flags.Local.LdFlags = append(flags.Local.LdFlags,
+		//LTO
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+			"-Wl,-mllvm,-inline-threshold=600")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+			"-Wl,-mllvm,-inlinehint-threshold=750")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+			"-Wl,-mllvm,-unroll-threshold=600")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
 				"-Wl,--lto-O3")
-		}
+		//Polly + Polly DCE
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-ast-use-context")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-invariant-load-hoisting")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-run-inliner")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-vectorizer=stripmine")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-run-dce")
 	}
 	return flags
 }
