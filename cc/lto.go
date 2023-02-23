@@ -111,8 +111,13 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 
 		if (lto.DefaultThinLTO(ctx) || lto.ThinLTO()) && ctx.Config().IsEnvTrue("USE_THINLTO_CACHE") && lto.useClangLld(ctx) {
 			// Set appropriate ThinLTO cache policy
+			var cacheDir string
 			cacheDirFormat := "-Wl,--thinlto-cache-dir="
-			cacheDir := android.PathForOutput(ctx, "thinlto-cache").String()
+			if tltoCacheDir := ctx.Config().Getenv("THINLTO_CACHE_DIR"); tltoCacheDir != "" {
+				cacheDir = tltoCacheDir
+			} else {
+				cacheDir = android.PathForOutput(ctx, "thinlto-cache").String()
+			}
 			flags.Local.LdFlags = append(flags.Local.LdFlags, cacheDirFormat+cacheDir)
 
 			// Limit the size of the ThinLTO cache to the lesser of 10% of available
