@@ -148,6 +148,18 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 				"-Wl,-mllvm,-polly-vectorizer=stripmine")
 		flags.Local.LdFlags = append(flags.Local.LdFlags,
 				"-Wl,-mllvm,-polly-run-dce")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-loopfusion-greedy=1")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-reschedule=1")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-postopts=1")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-omp-backend=LLVM")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-scheduling=dynamic")
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,-mllvm,-polly-scheduling-chunksize=1")
 	}
 	return flags
 }
