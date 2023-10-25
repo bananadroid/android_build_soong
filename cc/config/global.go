@@ -249,6 +249,19 @@ var (
 		"-Wno-error=unguarded-availability",
 		"-Wno-error=logical-op-parentheses",
 		"-Wno-error=shadow-uncaptured-local",
+		// TODO: Enable this warning http://b/315245071
+		"-Wno-error=fortify-source",
+		// This rarely indicates a bug. http://b/145210666
+		"-Wno-error=reorder-init-list",
+		// Probably a new compiler thing. 1000s of error.
+		"-Wno-error=missing-field-initializers",
+		"-Wno-error=format", // Disable only the one that is bothering.
+		"-Wno-error=integer-overflow",
+		"-Wno-error=packed-non-pod",
+		"-Wno-error=shadow",
+		"-Wno-error=tautological-negation-compare",
+		"-Wno-error=tautological-undefined-compare",
+		"-Wno-error=unused-variable",
 	}
 
 	noOverride64GlobalCflags = []string{}
@@ -265,6 +278,8 @@ var (
 		"-Wno-misleading-indentation",
 		"-Wno-array-parameter",
 		"-Wno-gnu-offsetof-extensions",
+		// TODO: Enable this warning http://b/315245071
+		"-Wno-error=fortify-source",
 	}
 
 	// Extra cflags for external third-party projects to disable warnings that
@@ -314,8 +329,8 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r498229b"
-	ClangDefaultShortVersion = "17"
+	ClangDefaultVersion      = "clang-r510928"
+	ClangDefaultShortVersion = "18"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
