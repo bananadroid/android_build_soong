@@ -465,7 +465,6 @@ var (
 		"libandroid_runtime_lazy",
 		"libandroid_runtime_vm_headers",
 		"libaudioclient_aidl_conversion_util",
-		"libbinder",
 		"libbinder_device_interface_sources",
 		"libbinder_aidl",
 		"libbinder_headers",
@@ -515,7 +514,6 @@ var (
 		"libtextclassifier_hash_static",
 		"libtflite_kernel_utils",
 		"libtinyxml2",
-		"libui",
 		"libui-types",
 		"libui_headers",
 		"libvorbisidec",
@@ -586,7 +584,6 @@ var (
 		"car-ui-androidx-constraintlayout-solver-nodeps",
 
 		//system/libhidl
-		"libhidlbase", // needed by cc_hidl_library
 		"libhidl_gtest_helper",
 
 		//frameworks/native
