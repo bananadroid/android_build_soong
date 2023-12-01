@@ -527,7 +527,6 @@ var (
 		"packagemanager_aidl_interface",
 		"philox_random",
 		"philox_random_headers",
-		"server_configurable_flags",
 		"service-permission-streaming-proto-sources",
 		"statslog_neuralnetworks.cpp",
 		"statslog_neuralnetworks.h",
