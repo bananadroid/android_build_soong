@@ -249,6 +249,9 @@ var (
 		"-Wno-error=unguarded-availability",
 		"-Wno-error=logical-op-parentheses",
 		"-Wno-error=shadow-uncaptured-local",
+		"-Wno-error=thread-safety-reference-return",
+		"-Wno-error=vla-cxx-extension",
+		"-Wno-error=invalid-offsetof",
 		// TODO: Enable this warning http://b/315245071
 		"-Wno-error=fortify-source",
 		// This rarely indicates a bug. http://b/145210666
@@ -329,7 +332,7 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r510928"
+	ClangDefaultVersion      = "clang-r522817"
 	ClangDefaultShortVersion = "18"
 
 	// Directories with warnings from Android.bp files.
